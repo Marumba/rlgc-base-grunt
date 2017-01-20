@@ -2,6 +2,7 @@ module.exports = function(grunt){
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('autoprefixer');
 
@@ -32,6 +33,10 @@ module.exports = function(grunt){
         }
     },
 
+    jshint: {
+      all: ['*.js']
+    },
+
     watch: {
       options: {
         livereload: true
@@ -39,6 +44,10 @@ module.exports = function(grunt){
       sass: {
         files: 'style.sass',	
         tasks: ['sass','postcss']
+      },
+      js: {
+        files: '*.js',
+        tasks: ['jshint']
       }
     }
   });
